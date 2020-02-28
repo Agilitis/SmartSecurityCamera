@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent {
   fileToUpload: File = null;
-  private message: string;
+  protected message: string;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
