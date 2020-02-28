@@ -21,7 +21,12 @@ export class HomeComponent {
   }
 
   postFile(fileToUpload: File): Observable<any> {
-    const endpoint = this.baseUrl + 'api/Videos';
+    let endpoint: string;
+    if (!!this.baseUrl) {
+      endpoint = this.baseUrl + 'api/Videos';
+    } else {
+      endpoint = "https://objectdetectionwithtraining-dev-as.azurewebsites.net/api/Videos";
+    }
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
     return this.http.post<any>(endpoint, formData, {reportProgress: true});
