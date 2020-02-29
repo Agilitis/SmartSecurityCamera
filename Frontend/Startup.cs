@@ -38,6 +38,7 @@ namespace Frontend
             }
             else
             {
+                app.UseDeveloperExceptionPage();
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
