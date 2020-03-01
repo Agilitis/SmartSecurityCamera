@@ -25,9 +25,9 @@ namespace Frontend.Controllers
                 if (file.Length > 0)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var path = "./Files/" + fileName;
+                    var path = "./" + fileName;
 
-                    using (var stream = new FileStream("./Files/" + fileName, FileMode.Create))
+                    using (var stream = new FileStream(path, FileMode.Create))
                     {
                         file.CopyTo(stream);
                     }
