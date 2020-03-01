@@ -57,6 +57,7 @@ namespace Frontend.Controllers
             }
             catch (Exception ex)
             {
+
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
