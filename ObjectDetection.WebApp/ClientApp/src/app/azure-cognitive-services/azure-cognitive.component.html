@@ -1,0 +1,10 @@
+<h1>Töltsd fel a képet, amit elemezni szeretnél!</h1>
+
+<div class="form-group">
+  <label for="file">Choose File</label>
+  <input type="file"
+         id="file"
+         (change)="handleFileInput($event.target.files)">
+</div>
+
+<div *ngIf="message">{{message}}</div>

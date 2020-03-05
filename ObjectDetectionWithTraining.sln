@@ -5,7 +5,10 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectDetectionWithTrainingML.Model", "ObjectDetectionWithTrainingML.Model\ObjectDetectionWithTrainingML.Model.csproj", "{0245A47F-89E0-43BD-9CFC-C7A22C105491}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "Frontend\WebApp.csproj", "{231E35B4-A86A-4A55-B33F-196B3EB234F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectDetection.WebApp", "ObjectDetection.WebApp\ObjectDetection.WebApp.csproj", "{7C163C87-6B07-40D5-8905-D055F3755AF1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0245A47F-89E0-43BD-9CFC-C7A22C105491} = {0245A47F-89E0-43BD-9CFC-C7A22C105491}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +20,10 @@ Global
 		{0245A47F-89E0-43BD-9CFC-C7A22C105491}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0245A47F-89E0-43BD-9CFC-C7A22C105491}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0245A47F-89E0-43BD-9CFC-C7A22C105491}.Release|Any CPU.Build.0 = Release|Any CPU
-		{231E35B4-A86A-4A55-B33F-196B3EB234F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{231E35B4-A86A-4A55-B33F-196B3EB234F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{231E35B4-A86A-4A55-B33F-196B3EB234F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{231E35B4-A86A-4A55-B33F-196B3EB234F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C163C87-6B07-40D5-8905-D055F3755AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C163C87-6B07-40D5-8905-D055F3755AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C163C87-6B07-40D5-8905-D055F3755AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C163C87-6B07-40D5-8905-D055F3755AF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
