@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ObjectDetectionWithTrainingML.Model;
@@ -12,6 +13,7 @@ namespace Frontend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("allowFrontEnd")]
     public class VideosController : ControllerBase
     {
         [HttpPost]

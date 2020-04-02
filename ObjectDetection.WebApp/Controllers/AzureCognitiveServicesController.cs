@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
@@ -13,6 +13,7 @@ namespace ObjectDetection.WebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("allowFrontEnd")]
     public class AzureCognitiveServicesController : ControllerBase
     {
         const string endpoint = "https://westeurope.api.cognitive.microsoft.com/";
@@ -38,32 +39,26 @@ namespace ObjectDetection.WebApp.Controllers
                     }
 
                     List<VisualFeatureTypes> features = new List<VisualFeatureTypes>()
-{
-  VisualFeatureTypes.Categories, VisualFeatureTypes.Description,
-  VisualFeatureTypes.Faces, VisualFeatureTypes.ImageType,
-  VisualFeatureTypes.Tags, VisualFeatureTypes.Adult,
-  VisualFeatureTypes.Color, VisualFeatureTypes.Brands,
-  VisualFeatureTypes.Objects
-};
+                    {
+                        VisualFeatureTypes.Categories, VisualFeatureTypes.Description,
+                        VisualFeatureTypes.Faces, VisualFeatureTypes.ImageType,
+                        VisualFeatureTypes.Tags, VisualFeatureTypes.Adult,
+                        VisualFeatureTypes.Color, VisualFeatureTypes.Brands,
+                        VisualFeatureTypes.Objects
+                    };
 
                     using (var stream = new FileStream(path, FileMode.Open))
                     {
-                        ImageAnalysis results = await computerVisionClient.AnalyzeImageInStreamAsync(stream, features);
-                        return Ok(new { message = results});
-
+                        var results = await computerVisionClient.AnalyzeImageInStreamAsync(stream, features);
+                        return Ok(new {message = results});
                     }
-
-
-
                 }
-                else
-                {
-                    return BadRequest();
-                }
+
+                return BadRequest();
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
@@ -75,15 +70,9 @@ namespace ObjectDetection.WebApp.Controllers
         public static ComputerVisionClient Authenticate(string endpoint, string key)
         {
             ComputerVisionClient client =
-              new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
-              { Endpoint = endpoint };
+                new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
+                    {Endpoint = endpoint};
             return client;
         }
     }
 }
-
-
-
-
-
-

@@ -25,7 +25,7 @@ import { Observable } from "rxjs";
     postFile(fileToUpload: File): Observable<any> {
       let endpoint: string;
       if (!!this.baseUrl) {
-        endpoint = this.baseUrl + 'api/AzureCognitiveServices';
+        endpoint = 'https://localhost:5001/api/AzureCognitiveServices';
       } else {
         endpoint = "https://objectdetectionwithtraining-dev-as.azurewebsites.net/api/AzureCognitiveServices";
       }

@@ -23,7 +23,7 @@ export class HomeComponent {
   postFile(fileToUpload: File): Observable<any> {
     let endpoint: string;
     if (!!this.baseUrl) {
-      endpoint = this.baseUrl + 'api/Videos';
+      endpoint = 'https://localhost:5001/api/Videos';
     } else {
       endpoint = "https://objectdetectionwithtraining-dev-as.azurewebsites.net/api/Videos";
     }
