@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Alturos.Yolo;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace ObjectDetection.WebApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("allowFrontEnd")]
-    public class VideosController : ControllerBase
+    public class YoloController : ControllerBase
     {
         [HttpPost]
         public async Task<IActionResult> PostFile(List<IFormFile> files)
@@ -33,28 +34,16 @@ namespace ObjectDetection.WebApp.Controllers
                         file.CopyTo(stream);
                     }
 
-                    var input = new ModelInput();
-
-                    input.ImageSource = path;
-
-                    ModelOutput result = ConsumeModel.Predict(input);
-
-                    var highestScore = 0.0;
-
-                    foreach (var score in result.Score)
+                    var configurationDetector = new ConfigurationDetector();
+                    using (var yoloWrapper = new YoloWrapper("./yolov2-tiny-voc.cfg", "./yolov2-tiny-voc.weights", "./voc.names"))
                     {
-                        if (highestScore < score)
-                        {
-                            highestScore = score;
-                        }
-                    }
+                        var items = yoloWrapper.Detect(path);
+                        Console.WriteLine((items));
+                        return Ok(new { message = $"The image contains: {items}" });
 
-                    return Ok(new { message = $"The image contains: {result.Prediction} with a chance of {highestScore * 100}%" });
+                    }
                 }
-                else
-                {
-                    return BadRequest();
-                }
+                return BadRequest();
             }
             catch (Exception ex)
             {

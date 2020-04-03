@@ -13,7 +13,17 @@
     <UserSecretsId>0ad402f1-c9f6-43cf-bdb4-0393980e40c6</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="Alturos.Yolo" Version="2.6.4" />
+    <PackageReference Include="Alturos.YoloV2TinyVocData" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
     <PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision" Version="5.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
@@ -24,6 +34,15 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Include="..\..\..\.nuget\packages\alturos.yolov2tinyvocdata\1.0.0\build\net46\voc.names">
+      <Link>voc.names</Link>
+    </None>
+    <None Include="..\..\..\.nuget\packages\alturos.yolov2tinyvocdata\1.0.0\build\net46\yolov2-tiny-voc.cfg">
+      <Link>yolov2-tiny-voc.cfg</Link>
+    </None>
+    <None Include="..\..\..\.nuget\packages\alturos.yolov2tinyvocdata\1.0.0\build\net46\yolov2-tiny-voc.weights">
+      <Link>yolov2-tiny-voc.weights</Link>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

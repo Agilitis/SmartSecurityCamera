@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { AzureCognitiveComponent } from './azure-cognitive-services/azure-cognitive.component';
+import { YoloComponent } from './yolo/yolo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    AzureCognitiveComponent
+    AzureCognitiveComponent,
+    YoloComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -23,6 +25,7 @@ import { AzureCognitiveComponent } from './azure-cognitive-services/azure-cognit
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'azure-cognitive', component: AzureCognitiveComponent },
+      { path: 'yolo', component: YoloComponent },
     ])
   ],
   providers: [],
