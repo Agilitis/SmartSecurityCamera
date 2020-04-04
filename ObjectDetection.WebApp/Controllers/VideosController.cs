@@ -49,7 +49,7 @@ namespace ObjectDetection.WebApp.Controllers
                         }
                     }
 
-                    return Ok(new { message = $"The image contains: {result.Prediction} with a chance of {highestScore * 100}%" });
+                    return Ok(new { message = $"The image contains a handgun with a chance of {result.Score[4] * 100}%" });
                 }
                 else
                 {

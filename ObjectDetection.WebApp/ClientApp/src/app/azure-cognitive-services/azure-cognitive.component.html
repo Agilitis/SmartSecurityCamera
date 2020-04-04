@@ -7,4 +7,7 @@
          (change)="handleFileInput($event.target.files)">
 </div>
 
-<div *ngIf="message">{{message}}</div>
+<div *ngIf="message">
+  <div *ngFor="let tag of message.tags">
+  {{tag.name}} with a confidence of {{tag.confidence}}
+</div>
