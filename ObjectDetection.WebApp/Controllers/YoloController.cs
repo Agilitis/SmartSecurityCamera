@@ -1,13 +1,11 @@
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Alturos.Yolo;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ObjectDetectionWithTrainingML.Model;
 
 namespace ObjectDetection.WebApp.Controllers
 {
@@ -34,20 +32,14 @@ namespace ObjectDetection.WebApp.Controllers
                         file.CopyTo(stream);
                     }
 
-                    var configurationDetector = new ConfigurationDetector();
-                    using (var yoloWrapper = new YoloWrapper("./yolov2-tiny-voc.cfg", "./yolov2-tiny-voc.weights", "./voc.names"))
-                    {
-                        var items = yoloWrapper.Detect(path);
-                        Console.WriteLine((items));
-                        return Ok(new { message = $"The image contains: {items}" });
 
-                    }
+                  
                 }
                 return BadRequest();
             }
             catch (Exception ex)
             {
-
+                var foundFiles = Directory.GetFiles(".");
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }

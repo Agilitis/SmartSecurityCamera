@@ -22,8 +22,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Alturos.Yolo" Version="2.6.4" />
-    <PackageReference Include="Alturos.YoloV2TinyVocData" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
     <PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision" Version="5.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
