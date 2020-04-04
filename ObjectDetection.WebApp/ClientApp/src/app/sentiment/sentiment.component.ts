@@ -13,26 +13,25 @@ export class SentimentComponent {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-
-    this.postSentence().subscribe(result => {
-      this.message = result.message;
-    });
-  }
-
   postSentence(): Observable<any> {
     let endpoint: string;
+    console.log(this.sentence);
     if (!!this.baseUrl) {
-      endpoint = 'https://localhost:5001/api/Yolo';
+      endpoint = 'https://localhost:5001/api/Sentiment';
     } else {
-      endpoint = "https://objectdetectionwithtraining-dev-as.azurewebsites.net/api/Yolo";
+      endpoint = 'https://objectdetectionwithtraining-dev-as.azurewebsites.net/api/Yolo';
     }
-    
-    return this.http.post<any>(endpoint, this.sentence, { reportProgress: true });
+    return this.http.post<any>(endpoint, { sentence: this.sentence }, { reportProgress: true });
   }
 
   analyzeButtonClicked() {
-
+    this.postSentence().subscribe(result => {
+      console.log(result);
+      if (result.prediction) {
+        this.message = 'A mondat pozitív tartalmú ' + result.score + ' ponttal.';
+      } else {
+        this.message = 'A mondat negatív tartalmú ' + result.score + ' ponttal.';
+      }
+    });
   }
 }

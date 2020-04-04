@@ -1,8 +1,10 @@
 <h1>Írj be angolul egy kommentet egy filmhez!</h1>
 
 <div class="form-group">
-  <label for="file">Choose File</label>
-  <input mat-input type="text" ([ngModel])="sentence">
+  <mat-form-field class="example-full-width">
+    <mat-label>Elemzésre szánt mondat </mat-label>
+    <input matInput [(ngModel)]="sentence">
+  </mat-form-field>
 </div>
 <button mat-raised-button (click)="analyzeButtonClicked()" color="primary">ANALÍZIS</button>
 

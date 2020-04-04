@@ -21,9 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavMenuComponent,
     HomeComponent,
     AzureCognitiveComponent,
-    SentimentComponent,
-    MatButtonModule,
-    MatInputModule
+    SentimentComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,7 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'azure-cognitive', component: AzureCognitiveComponent },
       { path: 'sentiment', component: SentimentComponent },
     ]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
