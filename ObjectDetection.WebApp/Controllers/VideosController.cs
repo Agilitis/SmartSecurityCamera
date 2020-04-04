@@ -37,7 +37,7 @@ namespace ObjectDetection.WebApp.Controllers
 
                     input.ImageSource = path;
 
-                    ModelOutput result = ConsumeModel.Predict(input);
+                    ModelOutput result = ConsumePictureModel.Predict(input);
 
                     var highestScore = 0.0;
 

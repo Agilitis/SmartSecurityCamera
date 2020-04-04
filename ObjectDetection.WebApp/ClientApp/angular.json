@@ -147,5 +147,8 @@
       }
     }
   },
-  "defaultProject": "ObjectDetection.WebApp"
+  "defaultProject": "ObjectDetection.WebApp",
+  "cli": {
+    "analytics": false
+  }
 }
