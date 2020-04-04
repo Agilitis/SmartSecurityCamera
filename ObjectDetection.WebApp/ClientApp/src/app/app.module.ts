@@ -8,7 +8,12 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { AzureCognitiveComponent } from './azure-cognitive-services/azure-cognitive.component';
-import { YoloComponent } from './yolo/yolo.component';
+import {SentimentComponent} from './sentiment/sentiment.component';
+
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +21,9 @@ import { YoloComponent } from './yolo/yolo.component';
     NavMenuComponent,
     HomeComponent,
     AzureCognitiveComponent,
-    YoloComponent
+    SentimentComponent,
+    MatButtonModule,
+    MatInputModule
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -25,8 +32,9 @@ import { YoloComponent } from './yolo/yolo.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'azure-cognitive', component: AzureCognitiveComponent },
-      { path: 'yolo', component: YoloComponent },
-    ])
+      { path: 'sentiment', component: SentimentComponent },
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

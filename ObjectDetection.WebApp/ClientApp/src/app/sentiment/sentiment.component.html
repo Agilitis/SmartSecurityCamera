@@ -1,0 +1,9 @@
+<h1>Írj be angolul egy kommentet egy filmhez!</h1>
+
+<div class="form-group">
+  <label for="file">Choose File</label>
+  <input mat-input type="text" ([ngModel])="sentence">
+</div>
+<button mat-raised-button (click)="analyzeButtonClicked()" color="primary">ANALÍZIS</button>
+
+<div *ngIf="message">{{message}}</div>
