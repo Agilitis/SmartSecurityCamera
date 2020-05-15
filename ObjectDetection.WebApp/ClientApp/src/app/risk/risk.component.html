@@ -1,0 +1,16 @@
+<h1>Írj be angolul egy étterem ellenőrzési szcenáriót és a hozzá tartozó eseményt!</h1>
+
+<div class="form-group">
+  <mat-form-field class="example-full-width">
+    <mat-label>Ellenőrzés típsua </mat-label>
+    <input matInput [(ngModel)]="type">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Probléma </mat-label>
+    <input matInput [(ngModel)]="issue">
+  </mat-form-field>
+</div>
+<button mat-raised-button (click)="analyzeButtonClicked()" color="primary">ANALÍZIS</button>
+
+<div *ngIf="message">{{message}}</div>

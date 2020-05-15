@@ -39,17 +39,7 @@ namespace ObjectDetection.WebApp.Controllers
 
                     ModelOutput result = ConsumeModel.Predict(input);
 
-                    var highestScore = 0.0;
-
-                    foreach (var score in result.Score)
-                    {
-                        if (highestScore < score)
-                        {
-                            highestScore = score;
-                        }
-                    }
-
-                    return Ok(new { message = $"The image contains a handgun with a chance of {result.Score[4] * 100}%" });
+                    return Ok(new { message = $"The image contains a handgun with a chance of {result.Score[1] * 100}%" });
                 }
                 else
                 {

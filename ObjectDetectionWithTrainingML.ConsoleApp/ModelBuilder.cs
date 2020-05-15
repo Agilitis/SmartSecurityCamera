@@ -13,9 +13,8 @@ namespace ObjectDetectionWithTrainingML.ConsoleApp
 {
     public static class ModelBuilder
     {
-        private static string TRAIN_DATA_FILEPATH = @"C:\Users\Zsolt\AppData\Local\Temp\907c9736-daed-47ab-b12b-05ba18bcf6bd.tsv";
-        private static string MODEL_FILEPATH = @"../../../../ObjectDetectionWithTrainingML.Model/MLModel.zip";
-
+        private static string TRAIN_DATA_FILEPATH = @"C:\Users\Zsolt\AppData\Local\Temp\14ca5c66-566f-4b9f-aeca-ce3432e13e15.tsv";
+        private static string MODEL_FILEPATH = @"C:\Users\Zsolt\AppData\Local\Temp\MLVSTools\ObjectDetectionWithTrainingML\ObjectDetectionWithTrainingML.Model\MLModel.zip";
         // Create MLContext to be shared across the model creation workflow objects 
         // Set a random seed for repeatable/deterministic results across multiple trainings.
         private static MLContext mlContext = new MLContext(seed: 1);
@@ -49,10 +48,10 @@ namespace ObjectDetectionWithTrainingML.ConsoleApp
             var dataProcessPipeline = mlContext.Transforms.Conversion.MapValueToKey("Label", "Label")
                                       .Append(mlContext.Transforms.LoadRawImageBytes("ImageSource_featurized", null, "ImageSource"))
                                       .Append(mlContext.Transforms.CopyColumns("Features", "ImageSource_featurized"));
-
             // Set the training algorithm 
             var trainer = mlContext.MulticlassClassification.Trainers.ImageClassification(new ImageClassificationTrainer.Options() { LabelColumnName = "Label", FeatureColumnName = "Features" })
                                       .Append(mlContext.Transforms.Conversion.MapKeyToValue("PredictedLabel", "PredictedLabel"));
+
             var trainingPipeline = dataProcessPipeline.Append(trainer);
 
             return trainingPipeline;

@@ -13,6 +13,7 @@ import {SentimentComponent} from './sentiment/sentiment.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RiskComponent } from './risk/risk.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavMenuComponent,
     HomeComponent,
     AzureCognitiveComponent,
-    SentimentComponent
+    SentimentComponent,
+    RiskComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'azure-cognitive', component: AzureCognitiveComponent },
       { path: 'sentiment', component: SentimentComponent },
+      { path: 'risk', component: RiskComponent }
     ]),
     BrowserAnimationsModule,
     MatButtonModule,

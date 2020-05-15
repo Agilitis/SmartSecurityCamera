@@ -11,7 +11,7 @@ namespace ObjectDetectionWithTrainingML.ConsoleApp
     class Program
     {
         //Dataset to use for predictions 
-        private const string DATA_FILEPATH = @"C:\Users\Zsolt\AppData\Local\Temp\907c9736-daed-47ab-b12b-05ba18bcf6bd.tsv";
+        private const string DATA_FILEPATH = @"C:\Users\Zsolt\AppData\Local\Temp\14ca5c66-566f-4b9f-aeca-ce3432e13e15.tsv";
 
         static void Main(string[] args)
         {
@@ -19,7 +19,7 @@ namespace ObjectDetectionWithTrainingML.ConsoleApp
             ModelInput sampleData = CreateSingleDataSample(DATA_FILEPATH);
 
             // Make a single prediction on the sample data and print results
-            ModelOutput predictionResult = ConsumeModel.Predict(sampleData);
+            var predictionResult = ConsumeModel.Predict(sampleData);
 
             Console.WriteLine("Using model to make single prediction -- Comparing actual Label with predicted Label from sample data...\n\n");
             Console.WriteLine($"ImageSource: {sampleData.ImageSource}");
