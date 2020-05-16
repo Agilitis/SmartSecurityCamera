@@ -15,7 +15,11 @@ export class HomeComponent {
   // latest snapshot
   public webcamImage: WebcamImage = null;
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+    setInterval(() => {
+      this.triggerSnapshot();
+    }, 1000);
+  }
 
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
