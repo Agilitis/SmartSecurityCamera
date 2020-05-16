@@ -8,12 +8,13 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { AzureCognitiveComponent } from './azure-cognitive-services/azure-cognitive.component';
-import {SentimentComponent} from './sentiment/sentiment.component';
+import { SentimentComponent } from './sentiment/sentiment.component';
 
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RiskComponent } from './risk/risk.component';
+import { WebcamModule } from 'ngx-webcam';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { RiskComponent } from './risk/risk.component';
     ]),
     BrowserAnimationsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    WebcamModule
   ],
   providers: [],
   bootstrap: [AppComponent]

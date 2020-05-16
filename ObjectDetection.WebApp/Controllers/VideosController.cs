@@ -18,6 +18,7 @@ namespace ObjectDetection.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> PostFile(List<IFormFile> files)
         {
+        
             try
             {
                 var file = Request.Form.Files[0];

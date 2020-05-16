@@ -41,6 +41,9 @@
     <None Include="..\..\..\.nuget\packages\alturos.yolov2tinyvocdata\1.0.0\build\net46\yolov2-tiny-voc.weights">
       <Link>yolov2-tiny-voc.weights</Link>
     </None>
+    <None Update="MLModel.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

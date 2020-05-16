@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.ML;
@@ -31,7 +32,8 @@ namespace ObjectDetectionWithTrainingML.Model
                 MLContext mlContext = new MLContext();
 
                 // Load model & create prediction engine
-                string modelPath = @"C:\Users\Zsolt\AppData\Local\Temp\MLVSTools\ObjectDetectionWithTrainingML\ObjectDetectionWithTrainingML.Model\MLModel.zip";
+                var cwd = Directory.GetCurrentDirectory();
+                string modelPath = @"MLModel.zip";
                 ITransformer mlModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
                 PredictionEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
             }
