@@ -9,41 +9,34 @@ import { WebcamImage } from 'ngx-webcam';
 })
 export class HomeComponent {
   fileToUpload: File = null;
-  public message: string;
+  public result: string;
+  isWeaponDetected = false;
   // webcam snapshot trigger
   private trigger: Subject<void> = new Subject<void>();
+  private isAnalizationOn = false;
   // latest snapshot
   public webcamImage: WebcamImage = null;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
     setInterval(() => {
-      this.triggerSnapshot();
-    }, 1000);
-  }
-
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-
-    this.postFile(this.fileToUpload).subscribe(result => {
-      this.message = result.message;
-    });
+      if (this.isAnalizationOn) {
+        this.trigger.next();
+      }
+    }, 500);
   }
 
   public triggerSnapshot(): void {
-    this.trigger.next();
+    this.isAnalizationOn = !this.isAnalizationOn;
   }
 
   public handleImage(webcamImage: WebcamImage): void {
     this.webcamImage = webcamImage;
-    console.info(this.webcamImage.imageAsBase64);
-
     const imageName = 'asdf' + '.jpeg';
     // call method that creates a blob from dataUri
     const imageBlob = this.dataURItoBlob(this.webcamImage.imageAsBase64);
     const imageFile = new File([imageBlob], imageName, { type: 'image/jpeg' });
     this.postFile(imageFile).subscribe(result => {
-      console.log(result);
-      this.message = result.message;
+      this.isWeaponDetected = result > 0.85;
     });
   }
 

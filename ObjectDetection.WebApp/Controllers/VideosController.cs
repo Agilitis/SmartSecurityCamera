@@ -40,7 +40,7 @@ namespace ObjectDetection.WebApp.Controllers
 
                     ModelOutput result = ConsumeModel.Predict(input);
 
-                    return Ok(new { message = $"The image contains a handgun with a chance of {result.Score[1] * 100}%" });
+                    return Ok(result.Score[1]);
                 }
                 else
                 {

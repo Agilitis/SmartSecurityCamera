@@ -1,15 +1,10 @@
-<h1>Töltsd fel a képet, amit elemezni szeretnél!</h1>
+<h1>You can start the processing by pressing the button!</h1>
+<button mat-raised-button class="actionBtn" (click)="triggerSnapshot()">Start/stop analyze</button>
 
-<div class="form-group">
-  <label for="file">Choose File</label>
-  <input type="file" id="file" (change)="handleFileInput($event.target.files)">
-</div>
-
-<div *ngIf="message">{{message}}</div>
 <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
-<button mat-raised-button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
 
 <div class="snapshot" *ngIf="webcamImage">
-  <h2>Nice one!</h2>
-  <img [src]="webcamImage.imageAsDataUrl" />
+  <h3><div *ngIf="isWeaponDetected">Warning! Weapon detected!</div></h3>
+  <div *ngIf="!isWeaponDetected">No weapon detected</div>
+  <img height="200px" [src]="webcamImage.imageAsDataUrl" />
 </div>
