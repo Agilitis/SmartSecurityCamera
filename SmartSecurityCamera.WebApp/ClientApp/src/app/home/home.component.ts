@@ -36,14 +36,14 @@ export class HomeComponent {
     const imageBlob = this.dataURItoBlob(this.webcamImage.imageAsBase64);
     const imageFile = new File([imageBlob], imageName, { type: 'image/jpeg' });
     this.postFile(imageFile).subscribe(result => {
-      this.isWeaponDetected = result > 0.85;
+      this.isWeaponDetected = result > 0.98;
     });
   }
 
   postFile(fileToUpload: File): Observable<any> {
     let endpoint: string;
     if (!!this.baseUrl) {
-      endpoint = 'https://localhost:5001/api/Videos';
+      endpoint = 'https://localhost:5001/api/WeaponDetection';
     } else {
       endpoint = "https://objectdetectionwithtraining-dev-as.azurewebsites.net/api/Videos";
     }

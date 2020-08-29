@@ -1,10 +1,12 @@
 <h1>You can start the processing by pressing the button!</h1>
 <button mat-raised-button class="actionBtn" (click)="triggerSnapshot()">Start/stop analyze</button>
-
-<webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
-
 <div class="snapshot" *ngIf="webcamImage">
-  <h3><div *ngIf="isWeaponDetected">Warning! Weapon detected!</div></h3>
+  <h1>
+    <div *ngIf="isWeaponDetected">
+      Warning! Weapon detected!
+      <img src="webcamImage" height="200px">
+    </div>
+  </h1>
   <div *ngIf="!isWeaponDetected">No weapon detected</div>
-  <img height="200px" [src]="webcamImage.imageAsDataUrl" />
 </div>
+<webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>

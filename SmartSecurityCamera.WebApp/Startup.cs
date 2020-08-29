@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 
-namespace ObjectDetection.WebApp
+namespace SmartSecurityCamera.WebApp
 {
     public class Startup
     {

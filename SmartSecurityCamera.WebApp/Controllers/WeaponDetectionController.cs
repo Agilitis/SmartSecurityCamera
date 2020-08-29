@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ObjectDetectionWithTrainingML.Model;
 
-namespace ObjectDetection.WebApp.Controllers
+namespace SmartSecurityCamera.WebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("allowFrontEnd")]
-    public class VideosController : ControllerBase
+    public class WeaponDetectionController : ControllerBase
     {
         [HttpPost]
         public async Task<IActionResult> PostFile(List<IFormFile> files)
