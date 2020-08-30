@@ -4,7 +4,7 @@
   <h1>
     <div *ngIf="isWeaponDetected">
       Warning! Weapon detected!
-      <img src="webcamImage" height="200px">
+      <img [src]="webcamImage.imageAsDataUrl" height="200px">
     </div>
   </h1>
   <div *ngIf="!isWeaponDetected">No weapon detected</div>
